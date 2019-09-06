@@ -31,7 +31,11 @@ class DetailsActivity : AppCompatActivity(), Callback<Pokemon> {
         setContentView(R.layout.activity_details)
 
         val input = intent.getStringExtra("value")
-
+        if (input == "simple"){
+            getPokemon()
+        } else if(input == "path") {
+            getPokemonById(pokemonId = 1)
+        }
         pokemonService = PokemonApiInterface.Factory.create()
 
 
