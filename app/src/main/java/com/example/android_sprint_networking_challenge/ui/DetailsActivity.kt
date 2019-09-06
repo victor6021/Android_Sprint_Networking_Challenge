@@ -30,13 +30,17 @@ class DetailsActivity : AppCompatActivity(), Callback<Pokemon> {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
+        pokemonService = PokemonApiInterface.Factory.create()
+
         val input = intent.getStringExtra("value")
         if (input == "simple"){
+            title = "GET - Simple Request"
             getPokemon()
         } else if(input == "path") {
-            getPokemonById(pokemonId = 1)
+            title = "GET - Path Parameter: PokemonId"
+            getPokemonById("1")
         }
-        pokemonService = PokemonApiInterface.Factory.create()
+
 
 
     }
@@ -45,7 +49,7 @@ class DetailsActivity : AppCompatActivity(), Callback<Pokemon> {
         pokemonService.getPokemon().enqueue(this)
     }
 
-    private fun getPokemonById(pokemonId: Int){
+    private fun getPokemonById(pokemonId: String){
         pokemonService.getPokemonById(pokemonId).enqueue(this)
     }
 

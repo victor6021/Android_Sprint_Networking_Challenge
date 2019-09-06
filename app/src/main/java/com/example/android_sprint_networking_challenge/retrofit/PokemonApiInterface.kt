@@ -17,7 +17,7 @@ interface PokemonApiInterface {
     fun getPokemon(): Call<Pokemon>
 
     @GET("pokemon/{id}")
-    fun getPokemonById(@Path("id")pokemonId: Int): Call<Pokemon>
+    fun getPokemonById(@Path("id")pokemonId: String): Call<Pokemon>
 
 //    @GET()
 
