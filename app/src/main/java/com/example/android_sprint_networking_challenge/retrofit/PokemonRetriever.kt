@@ -9,17 +9,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PokemonRetriever {
 
     companion object{
-        internal const val BASE_URL = "https://pokeapi.co/"
+        const val BASE_URL = "https://pokeapi.co/"
     }
 
     fun getPokemon(): Call<List<Pokemon>>{
-        val gson = GsonBuilder()
+        val gSon = GsonBuilder()
             .setLenient()
             .create()
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gSon))
             .build()
 
         return retrofit.create(PokemonApiInterface::class.java).getPokemon()

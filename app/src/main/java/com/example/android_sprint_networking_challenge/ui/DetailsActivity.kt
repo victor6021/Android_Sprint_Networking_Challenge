@@ -33,10 +33,7 @@ class DetailsActivity : AppCompatActivity(), Callback<List<Pokemon>> {
 
         PokemonRetriever().getPokemon().enqueue(this)
 
-        val value: String = intent.extras?.getString("value").toString()
-
-
-        val input = intent.getStringExtra("get")
+        val input = intent.getStringExtra("value")
     }
 
     private fun getPokemon(){
