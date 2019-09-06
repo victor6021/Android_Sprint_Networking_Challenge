@@ -13,7 +13,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         image_view_search.setOnClickListener {
-            startActivity(Intent(this@MainActivity, DetailsActivity::class.java))
+            val value: String = edit_text.text.toString()
+            val intent = Intent(this,DetailsActivity::class.java)
+            intent.putExtra("value", value)
+            startActivity(intent)
         }
     }
 }

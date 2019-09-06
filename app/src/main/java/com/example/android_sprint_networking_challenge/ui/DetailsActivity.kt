@@ -5,6 +5,8 @@ import android.os.Bundle
 import com.example.android_sprint_networking_challenge.R
 import com.example.android_sprint_networking_challenge.model.Pokemon
 import com.example.android_sprint_networking_challenge.retrofit.PokemonApiInterface
+import com.example.android_sprint_networking_challenge.retrofit.PokemonRetriever
+import kotlinx.android.synthetic.main.activity_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,16 +16,25 @@ class DetailsActivity : AppCompatActivity(), Callback<List<Pokemon>> {
     lateinit var pokemonService: PokemonApiInterface
 
     override fun onFailure(call: Call<List<Pokemon>>, t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onResponse(call: Call<List<Pokemon>>, response: Response<List<Pokemon>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        response.body()?.let{
+            text_view_name.text = getPokemon().toString()
+            text_view_id.text = getPokemonById("").toString()
+            text_view_type.text = getPokemonType("").toString()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+
+        PokemonRetriever().getPokemon().enqueue(this)
+
+        val value: String = intent.extras?.getString("value").toString()
+
 
         val input = intent.getStringExtra("get")
     }
