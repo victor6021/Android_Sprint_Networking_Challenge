@@ -25,7 +25,7 @@ interface PokemonApiInterface {
     fun getPokemonAbility(@Path("ability") pokemonAbility: String): Call<Pokemon>
 
     @GET("type/{id or name}/")
-    fun getPokemonType(@Path("type") pokemonType: String): Call<Pokemon>
+    fun getPokemonType(@Path("types") pokemonType: String): Call<Pokemon>
 
     class Factory {
 
