@@ -33,13 +33,9 @@ class DetailsActivity : AppCompatActivity(), Callback<Pokemon> {
         pokemonService = PokemonApiInterface.Factory.create()
 
         val input = intent.getStringExtra("value")
-        if (input == "simple"){
-            title = "GET - Simple Request"
             getPokemon()
-        } else if(input == "path") {
-            title = "GET - Path Parameter: PokemonId"
-            getPokemonById("1")
-        }
+            getPokemonById("id")
+
 
 
 
